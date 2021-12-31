@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .zoom {
+        width: 200px;
+        height: 200px;
+      }
+      .zoom:hover {
+        transform: scale(1.2);
+      }
+    </style>
+    <title>Rock, paper, scissors</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">
+        <div class="rock">ROCK</div>
+        <div class="rock">PAPER</div>
+        <div class="rock">SCISSORS</div>
+      </div>
+      <div class="scoreboard">
+        <div class="playerScore">
+          Player's Score:
+          <div class="playerScoreNum">0</div>
+        </div>
+        <div class="round">
+          Round #
+          <div class="roundNum">0</div>
+        </div>
+        <div class="computerScore">
+          Computer's Score:
+          <div class="computerScoreNum">0</div>
+        </div>
+      </div>
+
+      <div class="gameResult">Play rock, paper, scissors best of 5</div>
+
+      <div class="options">
+        <div class="option">
+          <img src="images/rock.png" class="zoom" alt="rock" />
+        </div>
+        <div class="option">
+          <img src="images/paper.png" class="zoom" alt="paper" />
+        </div>
+        <div class="option">
+          <img src="images/scissors.png" class="zoom" alt="scissors" />
+        </div>
+      </div>
+
+      <div class="game-over">
+        <p class="game-outcome"></p>
+        <button class="play-again">Play Again?</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
