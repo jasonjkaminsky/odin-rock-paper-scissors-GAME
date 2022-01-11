@@ -8,11 +8,14 @@ const gameResultOutput = document.querySelector(".gameResult");
 const roundOutput = document.querySelector(".roundNum");
 const computerScoreOutput = document.querySelector(".computerScoreNum");
 const playerScoreOutput = document.querySelector(".playerScoreNum");
-const playAgainButton = document.querySelector(".play-again");
+const rematchButton = document.querySelector(".rematch");
+const newHandButton = document.querySelector(".newHandButton");
+const options = document.querySelector(".options");
+const contest = document.querySelector(".contest");
 
 const computerOptions = ["rock", "paper", "scissors"];
 
-playAgainButton.addEventListener("click", reset);
+rematchButton.addEventListener("click", reset);
 
 playerOption.forEach((option) => {
     option.addEventListener("click", (e) => {
@@ -27,14 +30,7 @@ playerOption.forEach((option) => {
         playGame(e.target.alt, computerSelection);
     });
 
-    const handOptions = {
-        rock: "/images/rock.png",
-        paper: "/images/paper.png",
-        scissors: "/images/scissors.png",
-    };
-
     function playGame(playerSelection, computerSelection) {
-        let options = document.querySelector(".options");
         options.style.display = "none";
         if (computerSelection === playerSelection) {
             roundNum++;
@@ -65,8 +61,8 @@ playerOption.forEach((option) => {
             handOptions[computerSelection];
 
         ///// display the contest div /////
-        let contest = document.querySelector(".contest");
         contest.style.display = "flex";
+        contest.style.justifyContent = "center";
 
         checkFinalWinner();
     }
@@ -76,12 +72,14 @@ playerOption.forEach((option) => {
             gameOver = true;
             console.log("game over");
             displayWinner("player");
-            togglePlayAgain();
+            newHandButton.style.display = "none";
+            toggleRematch();
         } else if (computerScoreNum === 3) {
             console.log("game over");
             gameOver = true;
             displayWinner("computer");
-            togglePlayAgain();
+            newHandButton.style.display = "none";
+            toggleRematch();
         }
 
         function displayWinner(winner) {
@@ -94,14 +92,27 @@ playerOption.forEach((option) => {
             }
         }
     }
+
+    const handOptions = {
+        rock: "/images/rock.png",
+        paper: "/images/paper.png",
+        scissors: "/images/scissors.png",
+    };
+
+    const newHand = () => {
+        options.style.display = "flex";
+        contest.style.display = "none";
+    };
+
+    newHandButton.addEventListener("click", newHand);
 });
 
-function togglePlayAgain() {
-    playAgainButton.classList.toggle("play-again-visible");
+function toggleRematch() {
+    rematchButton.classList.toggle("rematch-visible");
 }
 
 function reset() {
-    togglePlayAgain();
+    toggleRematch();
     gameOver = false;
     playerScoreNum = 0;
     computerScoreNum = 0;
@@ -109,5 +120,8 @@ function reset() {
     playerScoreOutput.textContent = 0;
     computerScoreOutput.textContent = 0;
     roundOutput.textContent = 0;
-    gameResultOutput.textContent = "Play rock, paper, scissors best of 5";
+    options.style.display = "flex";
+    contest.style.display = "none";
+    newHandButton.style.display = "flex";
+    gameResultOutput.textContent = "First to three points wins!";
 }
