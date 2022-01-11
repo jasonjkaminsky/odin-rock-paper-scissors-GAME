@@ -8,6 +8,8 @@ const gameResultOutput = document.querySelector(".gameResult");
 const roundOutput = document.querySelector(".roundNum");
 const computerScoreOutput = document.querySelector(".computerScoreNum");
 const playerScoreOutput = document.querySelector(".playerScoreNum");
+const playerScoreNumColor = document.getElementById("playerScoreNum");
+const computerScoreNumColor = document.getElementById("computerScoreNum");
 const rematchButton = document.querySelector(".rematch");
 const newHandButton = document.querySelector(".newHandButton");
 const options = document.querySelector(".options");
@@ -35,6 +37,8 @@ playerOption.forEach((option) => {
         if (computerSelection === playerSelection) {
             roundNum++;
             roundOutput.textContent = roundNum;
+            playerScoreNumColor.style.color = "white";
+            computerScoreNumColor.style.color = "white";
             gameResultOutput.textContent = `you and computer both play ${playerSelection}... it's a draw`;
         } else if (
             (computerSelection === "rock" && playerSelection === "scissors") ||
@@ -45,12 +49,16 @@ playerOption.forEach((option) => {
             roundOutput.textContent = roundNum;
             computerScoreNum++;
             computerScoreOutput.textContent = computerScoreNum;
+            playerScoreNumColor.style.color = "white";
+            computerScoreNumColor.style.color = "yellow";
             gameResultOutput.textContent = `${computerSelection} beats ${playerSelection}... COMPUTER gets a point`;
         } else {
             roundNum++;
             roundOutput.textContent = roundNum;
             playerScoreNum++;
             playerScoreOutput.textContent = playerScoreNum;
+            playerScoreNumColor.style.color = "yellow";
+            computerScoreNumColor.style.color = "white";
             gameResultOutput.textContent = `${playerSelection} beats ${computerSelection}... YOU get a point!`;
         }
         ///// Set the user pick /////
@@ -86,9 +94,11 @@ playerOption.forEach((option) => {
             if (winner === "player") {
                 gameResultOutput.textContent =
                     "You beat the computer 😄 Congrats!!!";
+                playerScoreNumColor.style.color = "red";
             } else {
                 gameResultOutput.textContent =
                     "You lost to the computer 😭 Better luck next time.";
+                computerScoreNumColor.style.color = "red";
             }
         }
     }
@@ -120,6 +130,8 @@ function reset() {
     playerScoreOutput.textContent = 0;
     computerScoreOutput.textContent = 0;
     roundOutput.textContent = 0;
+    playerScoreNumColor.style.color = "white";
+    computerScoreNumColor.style.color = "white";
     options.style.display = "flex";
     contest.style.display = "none";
     newHandButton.style.display = "flex";

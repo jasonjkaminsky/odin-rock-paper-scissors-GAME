@@ -11,7 +11,7 @@ body {
 
 .wrapper {
     width: 100vw;
-
+    height: 100vh;
     background-image: linear-gradient(#144275, #270166);
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@ body {
     margin-top: -50px;
     height: 44px;
     width: 180px;
-    font-size: 22px;
+    font-size: 23px;
     background-color: white;
     border-radius: 14px;
     transition: transform 0.15s;
