@@ -104,9 +104,9 @@ playerOption.forEach((option) => {
     }
 
     const handOptions = {
-        rock: "/images/rock.png",
-        paper: "/images/paper.png",
-        scissors: "/images/scissors.png",
+        rock: "images/rock.png",
+        paper: "images/paper.png",
+        scissors: "images/scissors.png",
     };
 
     const newHand = () => {
